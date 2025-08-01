@@ -1,0 +1,176 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Trending Preview Banner Design </title>    
+    <meta name="description" content="The Trending Preview Banner Design is developed by html, css coding used to develop it and fully responsive design concept used in the trending preview banner design design model for develop or create the template. " />
+	
+	<meta name="keywords" content="codingwithssr, " />
+	  <link href="style.css" rel="stylesheet" >
+	<meta name="author" content="https://codepen.io/codingwithssr" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KL9C7XQPJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KL9C7XQPJP');
+</script>
+<!-- Google tag (gtag.js) this script for promote the code in google analytics-->
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M3N8GX9J');</script>
+<!-- End Google Tag Manager -->
+    <style>
+      .sec{
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+}
+  #imgbox{
+  display:flex; flex-direction: row;
+  flex-wrap:nowrap;
+  width:660px;  
+  overflow-x:auto;
+opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+      transform: scale(0.95);
+gap: 10px;
+}
+.iboxs.fade-out {
+  opacity: 0;
+    transform: scale(0.95);
+}
+.iboxs.fade-in {
+  opacity: 1;
+  transform: scale(1);
+}
+ #preview{
+  display:flex; 
+  flex-wrap:wrap;  
+}
+.ibox{
+  width:200px;
+  height:150px;  
+  margin:10px;
+  border-radius:15px;  gap:20px;
+  flex: 0 0 auto;
+}
+.iboxs{
+  width:650px;
+  height:300px;
+  margin:10px;
+}
+img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:15px; 
+  transition: .2s ease; 
+  touch-action: manipulation; 
+}
+@media(max-width:768px){
+  .ibox{
+    width:30%;
+    object-fit:cover;
+  }
+  .iboxs{
+    width:100%;
+    object-fit:cover;
+  }
+   #imgbox{
+     width:100%;
+  }
+}
+@media(max-width:400px){
+  .ibox{
+    width:100%;
+    object-fit:cover;
+  }
+  .iboxs{
+    width:100%;
+    object-fit:cover;
+  } #imgbox{
+     width:100%;
+  }
+}
+    </style>
+  </head>
+  <body>  
+<div class="sec">  
+  <div id="preview">  
+  </div>
+    <div id="imgbox">  
+  </div>
+</div>
+<script>
+  
+const imagelist=[
+  {
+      img:"https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg"
+
+  },
+  {
+      img:"https://images.pexels.com/photos/3184460/pexels-photo-3184460.jpeg"
+
+  },
+   {
+      img:"https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg"
+
+  },
+   {
+      img:"https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg"
+
+  }
+   
+]
+const imgbox = document.getElementById("imgbox");
+const preview =  document.getElementById("preview");
+const dimg = imagelist[0].img;
+preview.innerHTML=`
+<div class="iboxs">
+  <img src="${dimg}">
+    </div>
+`;
+imagelist.forEach(function(ibox,index){
+
+  const card = document.createElement("div");
+  card.className="ibox";
+  
+  card.innerHTML=`
+  <img src="${ibox.img}">  
+  `;
+  
+  card.addEventListener('click', function(){
+    const oldBox = document.querySelector('.iboxs');
+
+  // Add fade-out class
+  if (oldBox) {
+    oldBox.classList.add('fade-out');
+  }
+     setTimeout(() => {
+        preview.innerHTML='';
+
+            const card1  = document.createElement("div");
+            card1.className="iboxs";    
+               card1.innerHTML=`
+               <img src="${ibox.img}">
+               `;
+
+            preview.appendChild(card1);
+         }, 300);
+  });
+  
+  imgbox.appendChild(card);
+  
+});
+</script>
+ </body>
+</html>
